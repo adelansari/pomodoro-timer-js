@@ -125,3 +125,9 @@ input[type="button"] {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.add-time-btn {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  grid-column: 1 / span 2;
+}
