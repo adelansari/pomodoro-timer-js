@@ -70,3 +70,7 @@ circle {
   fill: transparent;
   stroke-width: 6;
 }
+
+.progress-ring--shadow circle {
+  stroke: var(--secondary-color);
+}
