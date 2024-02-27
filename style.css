@@ -81,3 +81,17 @@ circle {
   transform-origin: 50% 50%;
   transition: stroke-dashoffset 0.5s ease-in;
 }
+
+.controls {
+  width: 290px;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+.timer {
+  background-color: var(--secondary-color);
+  padding: 12px;
+  border-radius: 8px;
+}
