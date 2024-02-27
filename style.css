@@ -2,6 +2,8 @@
   --bg-color: #f9d3ee;
   --primary-color: #da4b27;
   --secondary-color: #f7b0d6;
+  --break-color: #c5d9f5;
+  --primary-break-color: #3fb56c;
   --font-family: "Grandstander", cursive;
   --timer-size: 600px;
 }
@@ -24,7 +26,8 @@ body {
   color: var(--primary-color);
   display: grid;
   place-items: center;
-  grid-template-rows: 300px 300px;
+  grid-template-rows: auto 1fr;
+  padding-top: 20px;
 }
 
 h1 {
@@ -134,4 +137,14 @@ input[type="button"] {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   grid-column: 1 / span 2;
+}
+
+.break-phase {
+  background-color: var(--break-color);
+}
+
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+  }
 }
