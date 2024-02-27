@@ -65,3 +65,8 @@ main > div {
   height: var(--timer-size);
   width: var(--timer-size);
 }
+
+circle {
+  fill: transparent;
+  stroke-width: 6;
+}
