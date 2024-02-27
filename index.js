@@ -33,4 +33,41 @@ const updateTimer = (timer, numSeconds) => {
 controlBtn.addEventListener('click', () => {
     isPaused = !isPaused;
     controlBtn.classList.toggle('control-btn-paused', !isPaused);
+    if (!timerInterval) {
+        timerInterval = setInterval(decrement, 1000);
+    }
 })
+
+const decrement = () => {
+    if (isPaused) return;
+
+    currentSeconds--;
+
+    updateTimer(currentTimer, currentSeconds);
+    const percentage = (currentTotal - currentSeconds) / currentTotal;
+    setProgress(percentage);
+
+    if (currentSeconds == 0) {
+        clearInterval(timerInterval)
+        if (isWorkPhase) {
+            isWorkPhase = false;
+            currentSeconds = breakSeconds;
+            currentTimer = breakTimer;
+            workTimer.classList.remove('timer--active');
+            breakTimer.classList.add('timer--active');
+            document.body.classList.add('break-phase');
+            timerInterval = setInterval(decrement, 1000);
+        } else {
+            controlBtn.classList.remove('control-btn-paused');
+            controlBtn.setAttribute('disabled', 'disabled');
+            addTimeBtn.setAttribute('disabled', 'disabled');
+        }
+    }
+}
+
+const setProgress = (newPercentageValue) => {
+    const offset = circumference - (newPercentageValue * circumference);
+    circle.style.strokeDashoffset = offset;
+    const rotation = 360 * newPercentageValue;
+    arm.style.transform = `rotate(${rotation}deg)`;
+}
